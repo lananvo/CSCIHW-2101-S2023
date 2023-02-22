@@ -6,6 +6,13 @@ package HW1;
 //        color is ___"
 public class Adlibs {
     public  String story(String name, int age, String favoriteColor) {
-        return null;
+
+        String answer;
+        if (age <0 || age > 100) {
+            answer = "Invalid age";
+        } else {
+            answer = "Hello! My name is " + name + ", and I am " + age + ", and my favorite color is " + favoriteColor;
+        }
+        return answer;
     }
 }
