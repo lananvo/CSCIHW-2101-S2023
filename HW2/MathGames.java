@@ -17,6 +17,22 @@ static double PythagoreanTheorem(double a, double b) {
         return c;
     }
 
+    static double CalcMissingSide(double a, double b, double c) {
+        double missingSide = 0;
+        if (a != 0 && b != 0 && c != 0) {
+            System.out.println("You have entered all 3 sides of the triangle");
+        } else if (a == 0 && b == 0 && c == 0) {
+            System.out.println("You have not entered any sides of the triangle");
+        } else if (c != 0) {
+            missingSide = Math.sqrt(Math.pow(c, 2) - Math.pow(a, 2) - Math.pow(b, 2));
+        } else {
+            missingSide = Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2));}
+        
+        return missingSide;
+           
+    }
+    
+       
     
     // 2. Create a method that will calcuate my grade in the class. You can use the grade range as follows
         // A: 100 - 90
@@ -76,7 +92,8 @@ static double PythagoreanTheorem(double a, double b) {
     // You can either create a tester class or put your code here
      public static void main(String[] args){
         System.out.println(MathGames.PythagoreanTheorem(3, 4));
+        System.out.println(MathGames.CalcMissingSide(0, 3, 5));
         System.out.println(MathGames.calcGrade(89.9));
-        System.out.println(MathGames.tip(120, 3, 20));
+        System.out.println(MathGames.tip(200, 6, 20));
     }
 }
