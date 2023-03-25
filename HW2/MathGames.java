@@ -12,7 +12,10 @@ public class MathGames {
     // Hypotenuse and Perpendicular and return the base.
     // Example 1: pythagorean(3,4) would return 5
 
-
+static double PythagoreanTheorem(double a, double b) {
+        double c = Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2));
+        return c;
+    }
 
     
     // 2. Create a method that will calcuate my grade in the class. You can use the grade range as follows
@@ -28,8 +31,25 @@ public class MathGames {
         // Hint 3: You will probably need to use the Math.ceil() method
         // Example: grade(69.3) would return a D
 
+    static String calcGrade(double grade) {
+        String letterGrade = "";
+        grade = Math.ceil(grade);
+        if (grade >= 90) {
+            letterGrade = "A";
+        } else if (grade >= 80 && grade <= 89) {
+            letterGrade = "B";
+        } else if (grade >= 70 && grade <=79) {
+            letterGrade = "C";
+        } else if (grade >= 60 && grade <= 69) {
+            letterGrade = "D";
+        } else {
+            letterGrade = "F";
+        }
+        return letterGrade;
+    }
 
 
+    
 
 
 
@@ -42,12 +62,21 @@ public class MathGames {
     //      Hint 4: You will probably need to use the Math.ceil() method
     //      Example: tip(100, 4, 18) would return 5.0
 
-    
+    static double tip(double bill, double people, double tip) {
+        double tipPercent = tip / 100;
+        double tipAmount = bill * tipPercent;
+        double total = bill + tipAmount;
+        double totalPerPerson = total / people;
+        double totalPerPersonRounded = Math.ceil(totalPerPerson);
+        return totalPerPersonRounded;
+    }
  
 
 
     // You can either create a tester class or put your code here
      public static void main(String[] args){
-        
+        System.out.println(MathGames.PythagoreanTheorem(3, 4));
+        System.out.println(MathGames.calcGrade(89.9));
+        System.out.println(MathGames.tip(120, 3, 20));
     }
 }
