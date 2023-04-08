@@ -38,8 +38,7 @@ public class BankAccountTester {
         // int choice = BankAccount.menu();
         // System.out.println(choice);
 
-        BankAccount.interact(yourAccount);
-        // BankAccount.interact(myAccount);
+        BankAccount.interact(yourAccount, myAccount);
 
     }
 }
