@@ -1,6 +1,12 @@
 package HW4;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
+
 public class Arrays {
+
+    static Scanner input = new Scanner(System.in);
 
     // CONVERT THE SUMS METHOD FROM HW3 TO ADD EACH VALUE TO AN ARRAY AND THEN OUTPUT THE 
     // ARRAY AND THE TOTAL.
@@ -23,7 +29,22 @@ public class Arrays {
     // Total: 22
     // Array: {12,2,3,4,1,0}
     public static void Arraysums(){
+        int num = -1;
+        int total = 0;
+        ArrayList<Integer> nums = new ArrayList<Integer>();
+        System.out.println("I will add up the numbers you give me....");
+        while(num != 0){
+            System.out.print("Number: ");
+            num = input.nextInt();
+            total += num;
+            nums.add(num);
 
+            if (num != 0){
+                System.out.println("The total so far is " + total + ".");
+            }
+        }
+        System.out.println("Total: " + total);
+        System.out.println("Array: " + nums);
     }
 
     // Create a method that will brute force a password EX.
@@ -42,10 +63,19 @@ public class Arrays {
 
     public static String bruteForce(String password){
         String answer = "";
+        char[] pass = password.toCharArray();
         char[] alphabet = new char[]{'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
         'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
         '!', '@', '#', '$', '%', '^', '&', '*', '(', ')','<','>','/','?'};
-    
+        
+        for (char c1 : pass){
+            for (char c2 : alphabet){
+                if (c1 == c2){
+                    answer += c2;
+                    System.out.println(answer);
+                }
+            }
+        }
         return answer; 
     }
 
@@ -57,17 +87,37 @@ public class Arrays {
     // Hint 1: a temp Array is a helpful way to store variables for comparing 
     // Hint 2: 2 nested For loops should be all thats needed for the swapping logic
     public static int[] sorter(int[] nums){
+        int n = nums.length;
         int [] sortedArray = new int[nums.length];
+        for (int i = 0; i < n; i++){
+            sortedArray[i] = nums[i];
+        }
+        for (int i = 0; i < n-1; i++){
+            for (int j = 0; j < n-i-1; j++){
+                if (sortedArray[j] > sortedArray[j+1]){
+                    int temp = sortedArray[j];
+                    sortedArray[j] = sortedArray[j+1];
+                    sortedArray[j+1] = temp;
+                }
+            }   
+        }
+        for (int i = 0; i < n; i++){
+            System.out.print(sortedArray[i] + " ");
+        }
         return sortedArray;
     }
-
-
-
 
     public static void main(String[] args) {
         // Tester main method for your methods
         System.out.println("Hello World!");
+        Arraysums();
+       
+        System.out.println("What is the password?");
+        String password = input.next();
+        bruteForce(password);
 
+        sorter(new int[]{9,10,2,5,3,4,7,8});
+        
     }
 
     
