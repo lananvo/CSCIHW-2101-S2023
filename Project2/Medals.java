@@ -62,13 +62,38 @@ public class Medals {
             { 1, 0, 1 },
             { 1, 1, 0 }, 
             { 0, 0, 1 }, 
-            { 1, 0, 1 }, 
+            { 1, 0, 0 }, 
             { 0, 1, 1 }, 
             { 0, 1, 1 },
             { 1, 1, 0 }
         };
         System.out.println("        Country    Gold    Silver    Bronze   Total");
 
+        for(int i=0; i<counts.length; i++){
+            int total = 0;
+            System.out.printf("%15s", countries[i]);
+            for(int j=0; j<counts[i].length; j++){
+                System.out.printf("%8d", counts[i][j]);
+                total += counts[i][j];
+            }
+            System.out.printf("%8d\n", total);
+        }
+
+        System.out.println("            Total   Gold    Silver   Bronze   X");
+        ArrayList<Integer> medalCounts = new ArrayList<Integer>();
+
+        for(int i=0; i<counts[0].length; i++){
+            int sum = 0;
+            for(int j=0; j<counts.length; j++){
+                sum += counts[j][i];
+            }
+            medalCounts.add(sum);
+        }
+        System.out.printf("%15s", " ");
+        for(int i=0; i<medalCounts.size(); i++){
+            System.out.printf("%8d", medalCounts.get(i));
+        }
+        System.out.println();
 
         // TODO
         // Print countries, counts, and row totals (IE total medals by country)
